@@ -1,0 +1,26 @@
+1) CREATE VIEW alquileres AS
+   SELECT first_name AS Nombre, last_name AS Apellido, rental_date AS Dia_de_Alquilado,
+   rental_duration AS Duracion_de_Alquilado, title AS Pelicula
+   FROM customer JOIN rental USING (customer_id)
+   JOIN inventory USING (inventory_id)
+   JOIN film USING (film_id);
+
+2) INSERT INTO actor (actor_id, first_name, last_name, last_update)
+   VALUES ("201", "Luca", "Luriaud", "")
+
+   INSERT INTO film (film_id, title, release_year, language_id, last_update)
+   VALUES ("1001", "cars", "2006","1", ""), ("1002", "cars 2", "2013", "1", ""), ("1003", "cars  
+   3", "2019", "1", "")
+
+   INSERT INTO film_actor (film_id, actor_id, last_update)
+   VALUES ("1001", "201", ""), ("1002", "201", ""), ("1003", "201", "")
+   
+3) UPDATE customer
+   SET email = NULL;
+   
+4) UPDATE staff
+   SET username = last_name,
+   password = '1234';
+   
+5) DELETE FROM customer 
+   WHERE customer_id NOT IN (SELECT DISTINCT customer_id FROM rental)
